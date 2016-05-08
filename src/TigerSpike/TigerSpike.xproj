@@ -13,6 +13,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
+    <ApplicationInsightsResourceId>/subscriptions/8f78414e-a6e2-4a57-83d7-2b28cc577452/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/TigerSpike</ApplicationInsightsResourceId>
   </PropertyGroup>
   <ItemGroup>
     <DnxInvisibleContent Include="bower.json" />
