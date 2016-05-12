@@ -2,41 +2,32 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div ng-controller="FlickrFeedController as flickrCtrl" ng-init="flickrCtrl.loadFlickrFeed();" ng-cloak>
+<div ng-controller="FlickrFeedController as flickrCtrl" ng-init="flickrCtrl.loadFlickrFeed();">
 
-    <form name="searchForm" ng-submit="flickrCtrl.searchFlickr()" >
-        <input type="text" class="mdl-textfield--floating-label" ng-model="search" />
-        <input type="button" ng-click="flickrCtrl.searchFlickr()" value="Search" />
-    </form>
+    <div id="cd-search" class="cd-search is-visible">
+        <form name="searchForm" ng-submit="flickrCtrl.searchFlickr()">
+            <input id="search" type="text" class="mdl-textfield--full-width" autocomplete="off" placeholder="Search" ng-model="search" />
+        </form>
+    </div>
 
-    <div masonry='{ "transitionDuration" : "0.1s" , "itemSelector" : ".tile"}'>
+
+    <div masonry='{ "transitionDuration" : "0.1s" , "itemSelector" : ".tile"}' ng-hide="flickrCtrl.flickFeed.items.length">
         <!-- items -->
         <div masonry-tile tile class="tile masonrytile" ng-repeat="item in flickrCtrl.flickrFeed.items">
 
             <!-- Image card -->
-            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card mdl-shadow--2dp">
 
                 <div class="mdl-card__title">
                     <div class="mdl-card__title-text">{{item.title}}</div>
                 </div>
                 <div class="mdl-card__supporting-text">
                     <div ng-html-compile="item.description"></div>
-
                     <div>
-                        Author: {{item.author}}
+                        on {{item.date_taken | date}} by : {{item.author}} ({{item.author_id}})
                     </div>
-                    <div>
-                        Authorid: {{item.author_id}}
-                    </div>
-
-                    <div>
-
-                    </div>
-
-
-                    {{item.date_taken}}
                 </div>
-                <div class="mdl-card__actions mdl-card--border">
+                <div class="mdl-card__actions mdl-card--border" ng-show="item.flickrFeedTags.length > 0">
                     <!-- Accent-colored flat button -->
                     <button class="mdl-button mdl-js-button mdl-button--accent" ng-repeat="tag in item.flickrFeedTags" ng-click="flickrCtrl.clickTags(tag)">
                         {{tag}}
@@ -47,14 +38,3 @@
         </div>
     </div>
 </div>
-
-
-
-@section scripts
-{
-    <environment names="Development,Staging,Production">
-
-
-
-    </environment>
-}

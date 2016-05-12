@@ -13,14 +13,10 @@
             dataFactory.getFlickrPublicFeedJson($scope.search)
                 .then(function (data) {
                     ctrl.flickrFeed = data;
-
                 });
-
         }
 
         function searchFlickr(search) {
-            ctrl.search = search;
-            $scope.search = search;
             console.log($scope.search);
             console.log(ctrl.search);
 
@@ -35,6 +31,7 @@
             console.log($scope.search);
             console.log(ctrl.search);
 
+            $scope.search = search;
             dataFactory.getFlickrPublicFeedJson($scope.search)
             .then(function (data) {
                 ctrl.flickrFeed = data;

@@ -20,4 +20,11 @@
 
 .masonrytile {
 }
-
+#search {
+    border: none;
+    outline: none;
+    font-size: 72px;
+    text-align: center;
+    margin-top:30px;
+    margin-bottom: 30px;
+}
