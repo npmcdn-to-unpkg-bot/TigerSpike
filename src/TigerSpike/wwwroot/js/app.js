@@ -1,3 +1,3 @@
 ﻿(function () {
-    var app = angular.module('tigerSpike', ['ng', 'ngResource', 'wu.masonry']);
+    var app = angular.module('tigerSpike', ['ng', 'ngResource', 'masonry']);
 })();

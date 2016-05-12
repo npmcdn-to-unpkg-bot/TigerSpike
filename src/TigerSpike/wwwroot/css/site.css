@@ -1,1 +1,23 @@
 ﻿
+
+/*.masonry-item {
+    float: left;
+    width: 220px;
+    margin: 20px;
+}*/
+
+.grid-item {
+    width: 200px;
+}
+
+.grid-item--width2 {
+    width: 400px;
+}
+
+.tile {
+    margin: 10px;
+}
+
+.masonrytile {
+}
+

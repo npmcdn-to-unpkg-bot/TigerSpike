@@ -40,6 +40,6 @@
     "commit": "0938c71e226f81d33c2205e39694f4b988596f7f"
   },
   "_source": "https://github.com/desandro/imagesloaded.git",
-  "_target": "~4.1.0",
+  "_target": "*",
   "_originalSource": "imagesloaded"
 }

@@ -2,23 +2,49 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div ng-controller="FlickrFeedController as flickrCtrl" ng-init="init();">
-    <div>
+<div ng-controller="FlickrFeedController as flickrCtrl" ng-init="loadFlickrFeed();" ng-cloak>
+    <div ng-cloak>
         {{test}}
         {{flickrCtrl.test2}}
     </div>
-    <div ng-repeat="item in flickrCtrl.flickrFeed.items">
-        <img ng-src="{{item.media.m}}"/>
+
+
+    @*<div class="row">
+        <div class="masonry-item" ng-repeat="item in flickrCtrl.flickrFeed.items">
+            <img ng-src="{{ item.media.m }}"/>
+        </div>
+    </div>*@
+    @*<div class="row">
+        <div class="col-md-4" ng-repeat="item in flickrCtrl.flickrFeed.items">
+            <img ng-src="{{item.media.m}}"/>
+        </div>
+    </div>*@
+
+    @*<div class="grid">
+        <div class="grid-item">
+            <div ng-repeat="item in flickrCtrl.flickrFeed.items">
+                <img ng-src="{{item.media.m}}"/>
+            </div>
+        </div>
+    </div>*@
+    <div masonry='{ "transitionDuration" : "0.1s" , "itemSelector" : ".tile"}'>
+        <!-- items -->
+        <div masonry-tile tile class="tile masonrytile" ng-repeat="item in flickrCtrl.flickrFeed.items">
+            <img ng-src="{{item.media.m}}" />
+            <!-- Image card -->
+            
+
+        </div>
     </div>
-
-
 </div>
+
+
 
 @section scripts
 {
     <environment names="Development,Staging,Production">
-        
 
-        
+
+
     </environment>
 }
