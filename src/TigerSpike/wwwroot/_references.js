@@ -2,6 +2,7 @@
 /// <reference path="../gulpfile.js" />
 /// <reference path="js/app.js" />
 /// <reference path="js/FlickrFeed/Controllers/FlickrFeedController.js" />
+/// <reference path="js/flickrfeed/directives/flickrfeeddirectives.js" />
 /// <reference path="js/flickrfeed/factory/datafactory.js" />
 /// <reference path="lib/angular/angular.js" />
 /// <reference path="lib/angular-animate/angular-animate.js" />

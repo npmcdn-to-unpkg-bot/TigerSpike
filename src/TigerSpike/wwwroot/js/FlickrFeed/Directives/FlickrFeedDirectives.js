@@ -1,20 +1,12 @@
 ﻿var app = angular.module('tigerSpike');
-//app.directive('masonry', function ($parse) {
-//    return {
-//        restrict: 'AC',
-//        link: function (scope, elem, attrs) {
-//            elem.masonry({ itemSelector: '.masonry-item', columnWidth: $parse(attrs.masonry)(scope) });
-//        }
-//    };        
-//});
-
-//app.directive('masonryItem', function () {
-//    return {
-//        restrict: 'AC',
-//        link: function (scope, elem, attrs) {
-//            elem.imagesLoaded(function () {
-//               elem.parents('.masonry').masonry('reload');
-//            });
-//        }
-//    };        
-//});
+app.directive('ngHtmlCompile', function ($compile) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            scope.$watch(attrs.ngHtmlCompile, function(newValue, oldValue) {
+                element.html(newValue);
+                $compile(element.contents())(scope);
+            });
+        }
+    }
+});
