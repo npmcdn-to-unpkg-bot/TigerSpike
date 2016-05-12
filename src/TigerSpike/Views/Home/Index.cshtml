@@ -2,12 +2,23 @@
     ViewData["Title"] = "Home Page";
 }
 
+<div ng-controller="FlickrFeedController as flickrCtrl" ng-init="init();">
+    <div>
+        {{test}}
+        {{flickrCtrl.test2}}
+    </div>
+    <div ng-repeat="item in flickrCtrl.flickrFeed.items">
+        <img ng-src="{{item.media.m}}"/>
+    </div>
 
 
+</div>
 
 @section scripts
 {
     <environment names="Development,Staging,Production">
-        <script src="~/js/FlickrFeed/Controllers/FlickerFeedController.js" asp-append-version="true"></script>
+        
+
+        
     </environment>
 }
