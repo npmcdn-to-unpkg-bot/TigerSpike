@@ -14,6 +14,5 @@
 /// <reference path="lib/fizzy-ui-utils/utils.js" />
 /// <reference path="lib/get-size/get-size.js" />
 /// <reference path="lib/imagesloaded/imagesloaded.js" />
-/// <reference path="lib/jquery/dist/jquery.js" />
 /// <reference path="lib/masonry/masonry.js" />
 /// <reference path="lib/outlayer/outlayer.js" />

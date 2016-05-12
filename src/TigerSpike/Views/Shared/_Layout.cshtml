@@ -9,19 +9,17 @@
 
     <environment names="Development,Staging,Production">
         <link href="~/lib/angular-material/angular-material.min.css" rel="stylesheet" />
-        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-        <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
         <link href="~/lib/material-design-lite/material.css" rel="stylesheet" />
-        @*<link href="~/css/3rd-party.css" rel="stylesheet" />*@
         <link rel="stylesheet" href="~/css/site.css"/>
 
     </environment>
     @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
 </head>
 <body >
-<div class="container-fluid">
-    @RenderBody()
-</div>
+
+                @RenderBody()
+
+
 
 
 

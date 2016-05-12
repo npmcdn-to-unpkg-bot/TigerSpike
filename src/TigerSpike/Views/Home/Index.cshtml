@@ -2,8 +2,10 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div ng-controller="FlickrFeedController as flickrCtrl" ng-init="flickrCtrl.loadFlickrFeed();">
+<div ng-controller="FlickrFeedController as flickrCtrl" ng-init="flickrCtrl.loadFlickrFeed();" class="ng-cloak">
 
+    <!-- This can be put into it's own controller but for the moment there's only one page, also the code inside the controller is so similar it would almost
+        be redundant. #notSOLIDbutHey -->
     <div id="cd-search" class="cd-search is-visible">
         <form name="searchForm" ng-submit="flickrCtrl.searchFlickr()">
             <input id="search" type="text" class="mdl-textfield--full-width" autocomplete="off" placeholder="Search" ng-model="search" />
@@ -24,7 +26,9 @@
                 <div class="mdl-card__supporting-text">
                     <div ng-html-compile="item.description"></div>
                     <div>
-                        on {{item.date_taken | date}} by : {{item.author}} ({{item.author_id}})
+                        on {{item.date_taken | date}}
+                        <br/>
+                        by : {{item.author}} ({{item.author_id}})
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border" ng-show="item.flickrFeedTags.length > 0">
