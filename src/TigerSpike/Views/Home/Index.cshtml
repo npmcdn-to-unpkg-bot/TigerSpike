@@ -2,13 +2,13 @@
     ViewData["Title"] = "Home Page";
 }
 
+<form name="searchForm">
+    <input type="text" class="mdl-textfield--floating-label" ng-model="flickrCtlr.search" />
+    <input type="button" ng-click="flickrCtrl.searchFlickr(flickrCtlr.search)" value="Search" />
+</form>
+
 <div ng-controller="FlickrFeedController as flickrCtrl" ng-init="loadFlickrFeed();" ng-cloak>
 
-    <form name="searchForm" ng-submit="flickrCtrl.search()">
-        <input type="text" class="mdl-textfield--floating-label" ng-model="flickrCtlr.search"/>
-        <input type="submit" value="Search"/>
-    </form>
-    
     <div masonry='{ "transitionDuration" : "0.1s" , "itemSelector" : ".tile"}'>
         <!-- items -->
         <div masonry-tile tile class="tile masonrytile" ng-repeat="item in flickrCtrl.flickrFeed.items">
@@ -38,8 +38,8 @@
                         Authorid: {{item.author_id}}
                     </div>
 
-                    <div ng-repeat="tag in item.tagArray">
-                        <span ng-click="flickrCtrl.search(tag)">{{tag}}</span>
+                    <div ng-repeat="tag in item.flickrFeedTags">
+                        <span ng-click="flickrCtrl.searchFlickr(tag)">{{tag}}</span>
                     </div>
 
                     {{item.date_taken}}

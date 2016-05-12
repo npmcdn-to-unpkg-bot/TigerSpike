@@ -6,18 +6,18 @@
         $scope.loadFlickrFeed = loadFlickrFeed;
         $scope.search = "";
         $scope.searchFlickr = searchFlickr;
-        this.flickrFeedTags = {};
+        this.flickrFeedTags = [[]];
 
-        this.test2 = "test2";
         function loadFlickrFeed() {
             dataFactory.getFlickrPublicFeedJson($scope.search)
                 .then(function(data) {
                     ctrl.flickrFeed = data;
-                    for (var i = 0; i < ctrl.length; i++) {
-                        ctrl.flickrFeedTags.push(ctrl.flickrFeed[i].tags.split(' ')[0]);
+                    for (var i = 0; i < ctrl.flickrFeed.items.length; i++) {
+
+                        ctrl.flickrFeed.items[i].flickrFeedTags = ctrl.flickrFeed.items[i].tags.split(' ');
                     }
                     console.log(ctrl.flickrFeed);
-                    console.log($scope.flickrFeedTags);
+                    console.log(ctrl.flickrFeedTags);
         });
 
         }
