@@ -2,34 +2,25 @@
     ViewData["Title"] = "Home Page";
 }
 
-<form name="searchForm">
-    <input type="text" class="mdl-textfield--floating-label" ng-model="flickrCtlr.search" />
-    <input type="button" ng-click="flickrCtrl.searchFlickr(flickrCtlr.search)" value="Search" />
-</form>
+<div ng-controller="FlickrFeedController as flickrCtrl" ng-init="flickrCtrl.loadFlickrFeed();" ng-cloak>
 
-<div ng-controller="FlickrFeedController as flickrCtrl" ng-init="loadFlickrFeed();" ng-cloak>
+    <form name="searchForm" ng-submit="flickrCtrl.searchFlickr()" >
+        <input type="text" class="mdl-textfield--floating-label" ng-model="search" />
+        <input type="button" ng-click="flickrCtrl.searchFlickr()" value="Search" />
+    </form>
 
     <div masonry='{ "transitionDuration" : "0.1s" , "itemSelector" : ".tile"}'>
         <!-- items -->
         <div masonry-tile tile class="tile masonrytile" ng-repeat="item in flickrCtrl.flickrFeed.items">
-            
+
             <!-- Image card -->
             <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                @*<div class="mdl-card__media">
-                    <a href="{{item.link}}"><img ng-src="{{item.media.m}}" /></a>
-                </div>*@
-                
+
                 <div class="mdl-card__title">
                     <div class="mdl-card__title-text">{{item.title}}</div>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    @*<div ng-bind-html-unsafe>{{item.description}}</div>*@
-                    @*<div ng-show="item.title">{{item.title}}</div>*@
                     <div ng-html-compile="item.description"></div>
-
-                    <div>
-                        {{item.tags}}
-                    </div>
 
                     <div>
                         Author: {{item.author}}
@@ -38,26 +29,19 @@
                         Authorid: {{item.author_id}}
                     </div>
 
-                    <div ng-repeat="tag in item.flickrFeedTags">
-                        <span ng-click="flickrCtrl.searchFlickr(tag)">{{tag}}</span>
+                    <div>
+
                     </div>
+
 
                     {{item.date_taken}}
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
-                        <div ng-repeat="tag in item.tagArray">
-                            <span ng-click="flickrCtrl.search(tag)">{{tag}}</span>
-                        </div>
-                        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
-                    </a>
-                </div>
-                @*<div class="mdl-card__menu">
-                    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
-                        <i class="material-icons">share</i>
-                        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+                    <!-- Accent-colored flat button -->
+                    <button class="mdl-button mdl-js-button mdl-button--accent" ng-repeat="tag in item.flickrFeedTags" ng-click="flickrCtrl.clickTags(tag)">
+                        {{tag}}
                     </button>
-                </div>*@
+                </div>
             </div>
 
         </div>

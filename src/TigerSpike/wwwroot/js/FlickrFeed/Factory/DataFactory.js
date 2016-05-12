@@ -11,6 +11,9 @@
 
             return feed.getJson({ tags: imageTags })
                 .$promise.then(function (result) {
+                    for (var i = 0; i < result.items.length; i++) {
+                        result.items[i].flickrFeedTags = result.items[i].tags.split(' ');
+                    }
                     return result;
                 });
         }
